@@ -37,7 +37,8 @@ export const CARS: Car[] = [
       '/cars/car1/image_6.jpeg',
       '/cars/car1/image_7.jpeg'
     ],
-    featured: true
+    featured: true,
+    isSold: true
   },
   {
     id: 'car2',

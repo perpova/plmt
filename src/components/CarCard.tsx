@@ -26,7 +26,20 @@ export default function CarCard({ car }: CarCardProps) {
           className="object-cover group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="absolute top-3 left-3 flex flex-wrap gap-2">
+        {/* Angled Red SOLD Tag */}
+        {car.isSold && (
+          <div className="absolute top-0 right-0 z-20 w-32 h-32 overflow-hidden pointer-events-none">
+            <div className="absolute top-6 -right-9 w-36 bg-red-600 text-white font-black text-xs tracking-wider uppercase text-center py-1 shadow-lg rotate-45 border-y border-red-400/50">
+              SOLD
+            </div>
+          </div>
+        )}
+        <div className="absolute top-3 left-3 flex flex-wrap gap-2 z-10">
+          {car.isSold && (
+            <span className="px-3 py-1 rounded-full text-xs font-black bg-red-600 text-white shadow-sm uppercase tracking-wide">
+              SOLD
+            </span>
+          )}
           <span
             className={`px-3 py-1 rounded-full text-xs font-bold shadow-sm ${
               car.condition === 'Brand New'
@@ -42,7 +55,7 @@ export default function CarCard({ car }: CarCardProps) {
             </span>
           )}
         </div>
-        <div className="absolute bottom-3 right-3 bg-[#172325]/85 backdrop-blur-sm text-white px-2.5 py-1 rounded-md text-xs font-semibold flex items-center gap-1">
+        <div className="absolute bottom-3 right-3 bg-[#172325]/85 backdrop-blur-sm text-white px-2.5 py-1 rounded-md text-xs font-semibold flex items-center gap-1 z-10">
           <Calendar className="w-3.5 h-3.5 text-[#D6A84F]" />
           <span>{car.year}</span>
         </div>
@@ -86,9 +99,16 @@ export default function CarCard({ car }: CarCardProps) {
         <div>
           <div className="flex items-baseline justify-between pt-2 pb-4 border-t border-slate-100">
             <span className="text-xs text-[#536466] font-medium">Asking Price</span>
-            <span className="text-base font-extrabold text-[#D6A84F]">
-              {car.priceDisplay}
-            </span>
+            {car.isSold ? (
+              <span className="text-base font-extrabold text-red-600 flex items-center gap-1.5">
+                <span className="bg-red-600 text-white text-[10px] px-2 py-0.5 rounded font-black uppercase tracking-wider">SOLD</span>
+                <span>{car.priceDisplay}</span>
+              </span>
+            ) : (
+              <span className="text-base font-extrabold text-[#D6A84F]">
+                {car.priceDisplay}
+              </span>
+            )}
           </div>
 
           {/* CTAs */}

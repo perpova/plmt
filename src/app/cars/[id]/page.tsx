@@ -92,7 +92,7 @@ export default async function CarDetailPage({ params }: PageProps) {
         {/* Top Header */}
         <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
           <div>
-            <div className="flex items-center gap-2 mb-1">
+            <div className="flex items-center gap-2 mb-1 flex-wrap">
               <span className="text-xs font-bold uppercase tracking-wider text-[#1F7778]">
                 {car.make}
               </span>
@@ -100,6 +100,14 @@ export default async function CarDetailPage({ params }: PageProps) {
               <span className="text-xs font-semibold text-[#536466]">
                 {car.condition} Vehicle
               </span>
+              {car.isSold && (
+                <>
+                  <span className="text-slate-300">•</span>
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-black bg-red-600 text-white shadow-sm uppercase tracking-wide">
+                    SOLD
+                  </span>
+                </>
+              )}
             </div>
             <h1 className="text-2xl sm:text-4xl font-extrabold text-[#172325] tracking-tight">
               {car.name}
@@ -110,10 +118,23 @@ export default async function CarDetailPage({ params }: PageProps) {
           </div>
 
           <div className="md:text-right bg-[#F2F5F5] md:bg-transparent p-4 md:p-0 rounded-xl">
-            <span className="text-xs text-[#536466] font-medium block">Asking Price</span>
-            <span className="text-2xl sm:text-3xl font-extrabold text-[#D6A84F]">
-              {car.priceDisplay}
+            <span className="text-xs text-[#536466] font-medium block">
+              {car.isSold ? 'Vehicle Status' : 'Asking Price'}
             </span>
+            {car.isSold ? (
+              <div className="flex items-center md:justify-end gap-2">
+                <span className="bg-red-600 text-white text-xs px-2.5 py-1 rounded font-black uppercase tracking-wider">
+                  SOLD
+                </span>
+                <span className="text-xl sm:text-2xl font-extrabold text-red-600">
+                  {car.priceDisplay}
+                </span>
+              </div>
+            ) : (
+              <span className="text-2xl sm:text-3xl font-extrabold text-[#D6A84F]">
+                {car.priceDisplay}
+              </span>
+            )}
           </div>
         </div>
 
@@ -123,7 +144,7 @@ export default async function CarDetailPage({ params }: PageProps) {
           <div className="lg:col-span-7 space-y-8">
             {/* Gallery Component */}
             <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-              <ImageGallery images={car.images} carName={car.name} />
+              <ImageGallery images={car.images} carName={car.name} isSold={car.isSold} />
             </div>
 
             {/* Description Card */}

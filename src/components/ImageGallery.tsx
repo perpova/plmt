@@ -6,9 +6,10 @@ import Image from 'next/image';
 interface ImageGalleryProps {
   images: string[];
   carName: string;
+  isSold?: boolean;
 }
 
-export default function ImageGallery({ images, carName }: ImageGalleryProps) {
+export default function ImageGallery({ images, carName, isSold }: ImageGalleryProps) {
   const [selectedImage, setSelectedImage] = useState(images[0] || '/cars/placeholder.jpg');
 
   return (
@@ -23,6 +24,14 @@ export default function ImageGallery({ images, carName }: ImageGalleryProps) {
           priority
           sizes="(max-width: 1200px) 100vw, 60vw"
         />
+        {/* Angled Red SOLD Tag */}
+        {isSold && (
+          <div className="absolute top-0 right-0 z-20 w-36 sm:w-44 h-36 sm:h-44 overflow-hidden pointer-events-none">
+            <div className="absolute top-8 sm:top-9 -right-11 sm:-right-12 w-44 sm:w-52 bg-red-600 text-white font-black text-xs sm:text-base tracking-widest uppercase text-center py-1.5 sm:py-2 shadow-xl rotate-45 border-y-2 border-white/40">
+              SOLD
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Thumbnails */}

@@ -18,6 +18,7 @@ export interface Car {
   description: string;
   images: string[];
   featured?: boolean;
+  isSold?: boolean;
 }
 
 export interface DealershipInfo {
