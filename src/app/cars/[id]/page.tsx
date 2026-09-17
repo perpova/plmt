@@ -64,8 +64,9 @@ export default async function CarDetailPage({ params }: PageProps) {
   }
 
   const relatedCars = CARS.filter((c) => c.id !== car.id).slice(0, 3);
+  const priceText = car.isSold ? 'SOLD' : car.priceDisplay;
   const whatsappMsg = encodeURIComponent(
-    `Hi Priyankara Car Sale, I am interested in buying the ${car.year} ${car.make} ${car.model} (${car.priceDisplay}) listed on your website. Please share more details.`
+    `Hi Priyankara Car Sale, I am interested in buying the ${car.year} ${car.make} ${car.model} (${priceText}) listed on your website. Please share more details.`
   );
 
   return (
@@ -122,14 +123,9 @@ export default async function CarDetailPage({ params }: PageProps) {
               {car.isSold ? 'Vehicle Status' : 'Asking Price'}
             </span>
             {car.isSold ? (
-              <div className="flex items-center md:justify-end gap-2">
-                <span className="bg-red-600 text-white text-xs px-2.5 py-1 rounded font-black uppercase tracking-wider">
-                  SOLD
-                </span>
-                <span className="text-xl sm:text-2xl font-extrabold text-red-600">
-                  {car.priceDisplay}
-                </span>
-              </div>
+              <span className="text-2xl sm:text-3xl font-extrabold text-red-600 uppercase tracking-wider block">
+                SOLD
+              </span>
             ) : (
               <span className="text-2xl sm:text-3xl font-extrabold text-[#D6A84F]">
                 {car.priceDisplay}

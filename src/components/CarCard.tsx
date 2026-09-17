@@ -11,8 +11,9 @@ interface CarCardProps {
 
 export default function CarCard({ car }: CarCardProps) {
   const primaryImage = car.images[0] || '/cars/placeholder.jpg';
+  const priceText = car.isSold ? 'SOLD' : car.priceDisplay;
   const whatsappMsg = encodeURIComponent(
-    `Hi Priyankara Car Sale, I am interested in the ${car.year} ${car.make} ${car.model} (${car.priceDisplay}) listed on your website.`
+    `Hi Priyankara Car Sale, I am interested in the ${car.year} ${car.make} ${car.model} (${priceText}) listed on your website.`
   );
 
   return (
@@ -98,11 +99,12 @@ export default function CarCard({ car }: CarCardProps) {
         {/* Footer & Price */}
         <div>
           <div className="flex items-baseline justify-between pt-2 pb-4 border-t border-slate-100">
-            <span className="text-xs text-[#536466] font-medium">Asking Price</span>
+            <span className="text-xs text-[#536466] font-medium">
+              {car.isSold ? 'Status' : 'Asking Price'}
+            </span>
             {car.isSold ? (
-              <span className="text-base font-extrabold text-red-600 flex items-center gap-1.5">
-                <span className="bg-red-600 text-white text-[10px] px-2 py-0.5 rounded font-black uppercase tracking-wider">SOLD</span>
-                <span>{car.priceDisplay}</span>
+              <span className="text-base font-extrabold text-red-600 uppercase tracking-wider">
+                SOLD
               </span>
             ) : (
               <span className="text-base font-extrabold text-[#D6A84F]">
