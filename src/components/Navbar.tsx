@@ -4,16 +4,16 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { DEALERSHIP } from '@/data/dealership';
-import { Phone, MessageSquare, Menu, X, ShieldCheck, MapPin } from 'lucide-react';
+import { Phone, MessageSquare, Menu, X, ShieldCheck } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-[#15595A] text-white shadow-md border-b border-[#1F7778]">
-      {/* Top Banner Bar */}
-      <div className="bg-[#172325] text-xs py-2 px-4 border-b border-[#1F7778]/30">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      {/* Top Banner Bar - Hidden on Mobile (hidden md:block) */}
+      <div className="hidden md:block bg-[#172325] text-xs py-2 px-4 border-b border-[#1F7778]/30">
+        <div className="max-w-7xl mx-auto flex justify-between items-center gap-2">
           <div className="flex items-center gap-2 text-slate-300">
             <ShieldCheck className="w-4 h-4 text-[#D6A84F]" />
             <span className="font-medium text-slate-200">
@@ -31,12 +31,12 @@ export default function Navbar() {
             <span className="text-[#1F7778]">|</span>
             <a
               href={`tel:${DEALERSHIP.phoneLandlineRaw}`}
-              className="hover:text-[#D6A84F] flex items-center gap-1.5 transition-colors hidden sm:flex"
+              className="hover:text-[#D6A84F] flex items-center gap-1.5 transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-slate-400" />
               <span>Tel: {DEALERSHIP.phoneLandline}</span>
             </a>
-            <span className="text-[#1F7778] hidden sm:inline">|</span>
+            <span className="text-[#1F7778]">|</span>
             <a
               href={`https://wa.me/${DEALERSHIP.whatsappRaw}?text=Hi%20Priyankara%20Car%20Sale,%20I%20want%20to%20inquire%20about%20a%20vehicle.`}
               target="_blank"
@@ -53,7 +53,7 @@ export default function Navbar() {
       {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Brand Logo with Square logo.svg */}
+          {/* Brand Logo - Without "CAR SALE" text */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-12 h-12 bg-white rounded-xl shadow-md p-1 flex items-center justify-center shrink-0 border border-[#D6A84F]/40 group-hover:scale-105 transition-transform">
               <Image
@@ -70,7 +70,7 @@ export default function Navbar() {
                 PRIYANKARA <span className="text-[#D6A84F]">LANKA</span>
               </span>
               <span className="text-[11px] font-semibold text-teal-100 tracking-wider uppercase">
-                MOTOR TRADERS (PVT) LTD <span className="text-[#D6A84F]">| CAR SALE</span>
+                MOTOR TRADERS (PVT) LTD
               </span>
             </div>
           </Link>

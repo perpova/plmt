@@ -29,14 +29,13 @@ export const CARS: Car[] = [
     ],
     description: 'Suzuki Japan Alto 2016 / 2018 Registration. 1st owner, complete service records available. Excellent overall condition, highly fuel-efficient daily vehicle ideal for city driving. Price can be negotiated upon inspection.',
     images: [
-      '/cars/car1/image_1.jpg',
+      '/cars/car1/image_1.jpeg',
       '/cars/car1/image_2.jpeg',
       '/cars/car1/image_3.jpeg',
       '/cars/car1/image_4.jpeg',
       '/cars/car1/image_5.jpeg',
       '/cars/car1/image_6.jpeg',
-      '/cars/car1/image_7.jpeg',
-      '/cars/car1/image_8.jpeg'
+      '/cars/car1/image_7.jpeg'
     ],
     featured: true
   },
