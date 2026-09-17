@@ -5,6 +5,8 @@ import { DEALERSHIP } from '@/data/dealership';
 import { MapPin, Phone, Mail, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-[#172325] text-slate-300 border-t border-[#1F7778] pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,7 +33,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              <strong>{DEALERSHIP.legalName}</strong> (also known as <strong>{DEALERSHIP.altName}</strong>) is Matara's leading dealership for high-grade Japanese hatchbacks, hybrids, and SUVs in Sri Lanka.
+              <strong>{DEALERSHIP.legalName}</strong> is Matara's leading dealership for high-grade Japanese hatchbacks, hybrids, and SUVs in Sri Lanka.
             </p>
             <div className="pt-2 flex items-center gap-2 text-xs text-teal-300 font-semibold">
               <ShieldCheck className="w-4 h-4 text-[#D6A84F]" />
@@ -112,46 +114,66 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Showroom Contact Details */}
+          {/* Showroom Info Column */}
           <div className="space-y-3">
             <h3 className="text-white font-bold text-sm mb-4 uppercase tracking-wider text-[#D6A84F]">
               Showroom Info
             </h3>
+            {/* Address */}
             <div className="flex items-start gap-3 text-xs text-slate-300">
               <MapPin className="w-4 h-4 text-[#D6A84F] shrink-0 mt-0.5" />
-              <span>{DEALERSHIP.address.fullFormatted}</span>
+              <span>60, Akuressa Road, Isadeen Town, Matara</span>
             </div>
+
+            {/* Hotline */}
             <div className="flex items-center gap-3 text-xs text-slate-300">
               <Phone className="w-4 h-4 text-[#D6A84F] shrink-0" />
-              <div className="flex flex-col">
-                <a href={`tel:${DEALERSHIP.phoneHotlineRaw}`} className="hover:text-white font-bold">
-                  Hotline: {DEALERSHIP.phoneHotline}
-                </a>
-                <a href={`tel:${DEALERSHIP.phoneLandlineRaw}`} className="hover:text-white">
-                  Tel: {DEALERSHIP.phoneLandline}
-                </a>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 text-xs text-slate-300">
-              <Mail className="w-4 h-4 text-[#D6A84F] shrink-0" />
-              <a href={`mailto:${DEALERSHIP.email}`} className="hover:text-white">
-                {DEALERSHIP.email}
+              <a href={`tel:${DEALERSHIP.phoneHotlineRaw}`} className="hover:text-white font-semibold">
+                Hotline: {DEALERSHIP.phoneHotline}
               </a>
             </div>
+
+            {/* Landline */}
+            <div className="flex items-center gap-3 text-xs text-slate-300">
+              <Phone className="w-4 h-4 text-slate-400 shrink-0" />
+              <a href={`tel:${DEALERSHIP.phoneLandlineRaw}`} className="hover:text-white">
+                Landline: {DEALERSHIP.phoneLandline}
+              </a>
+            </div>
+
+            {/* Email with Bot Protection CSS Trick (bidi-override rtl) */}
+            <div className="flex items-center gap-3 text-xs text-slate-300">
+              <Mail className="w-4 h-4 text-[#D6A84F] shrink-0" />
+              <a href={`mailto:${DEALERSHIP.email}`} className="hover:text-white font-medium" title="Contact Email">
+                <span className="[unicode-bidi:bidi-override] [direction:rtl] inline-block">
+                  kl.elasracaraknayirp@ofni
+                </span>
+              </a>
+            </div>
+
+            {/* Operating Hours */}
             <div className="flex items-center gap-3 text-xs text-slate-300">
               <Clock className="w-4 h-4 text-[#D6A84F] shrink-0" />
-              <span>{DEALERSHIP.openingHours}</span>
+              <span>Mo-Su 08:30-18:30</span>
             </div>
           </div>
         </div>
 
-        {/* Bottom Legal Copyright */}
+        {/* Bottom Copyright & Developer Credit */}
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
           <p>
-            &copy; {new Date().getFullYear()} {DEALERSHIP.legalName} ({DEALERSHIP.altName}). All rights reserved.
+            &copy; {currentYear} {DEALERSHIP.legalName}. All rights reserved.
           </p>
-          <p className="flex items-center gap-2">
-            <span>Matara, Sri Lanka</span>
+          <p>
+            Web Development by{' '}
+            <a
+              href="https://perpova.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#D6A84F] hover:underline font-bold transition-colors"
+            >
+              Perpova Developers
+            </a>
           </p>
         </div>
       </div>

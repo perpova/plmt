@@ -18,13 +18,13 @@ export const DEALERSHIP = {
     postalCode: '81000',
     district: 'Southern Province',
     country: 'Sri Lanka',
-    fullFormatted: '60, Akuressa Road, Isadeen Town, Matara 81000',
+    fullFormatted: '60, Akuressa Road, Isadeen Town, Matara',
   },
   geo: {
     latitude: 5.9496,
     longitude: 80.5469,
   },
-  openingHours: 'Mo-Sa 08:30-18:30, Su 09:00-16:00',
+  openingHours: 'Mo-Su 08:30-18:30',
   socials: {
     facebook: 'https://facebook.com/priyankaracarsale',
     whatsappGroup: 'https://wa.me/94777878201',
