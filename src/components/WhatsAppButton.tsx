@@ -16,7 +16,7 @@ export default function WhatsAppButton() {
       aria-label="Contact Priyankara Car Sale on WhatsApp"
     >
       <MessageSquare className="w-7 h-7" />
-      <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs group-hover:ml-2 font-bold text-sm transition-all duration-300">
+      <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs group-hover:ml-2 font-bold text-xs transition-all duration-300">
         Chat with Us
       </span>
     </a>

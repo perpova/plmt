@@ -25,16 +25,20 @@ export interface DealershipInfo {
   legalName: string;
   altName: string;
   tagline: string;
-  phone: string;
-  phoneRaw: string;
+  phoneHotline: string;
+  phoneHotlineRaw: string;
+  phoneLandline: string;
+  phoneLandlineRaw: string;
   whatsapp: string;
   whatsappRaw: string;
   email: string;
   address: {
     street: string;
     city: string;
+    postalCode: string;
     district: string;
     country: string;
+    fullFormatted: string;
   };
   geo: {
     latitude: number;
@@ -45,4 +49,7 @@ export interface DealershipInfo {
     facebook?: string;
     whatsappGroup?: string;
   };
+  logoUrl: string;
+  faviconUrl: string;
+  ogImageUrl: string;
 }

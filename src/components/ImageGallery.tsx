@@ -13,11 +13,11 @@ export default function ImageGallery({ images, carName }: ImageGalleryProps) {
 
   return (
     <div className="space-y-4">
-      {/* Featured Big Image Display */}
-      <div className="relative h-80 sm:h-[450px] w-full bg-slate-900 rounded-2xl overflow-hidden shadow-lg border border-slate-200">
+      {/* Featured Display Image */}
+      <div className="relative h-80 sm:h-[450px] w-full bg-[#172325] rounded-2xl overflow-hidden shadow-md border border-slate-200">
         <Image
           src={selectedImage}
-          alt={`${carName} photo at Priyankara Lanka Motor Traders`}
+          alt={`${carName} photo at Priyankara Lanka Motor Traders Matara`}
           fill
           className="object-contain"
           priority
@@ -25,7 +25,7 @@ export default function ImageGallery({ images, carName }: ImageGalleryProps) {
         />
       </div>
 
-      {/* Thumbnails list */}
+      {/* Thumbnails */}
       <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
         {images.map((img, idx) => (
           <button
@@ -33,7 +33,7 @@ export default function ImageGallery({ images, carName }: ImageGalleryProps) {
             onClick={() => setSelectedImage(img)}
             className={`relative w-24 h-20 rounded-xl overflow-hidden shrink-0 border-2 transition-all ${
               selectedImage === img
-                ? 'border-red-600 scale-105 shadow-md'
+                ? 'border-[#1F7778] scale-105 shadow-md'
                 : 'border-slate-200 opacity-70 hover:opacity-100'
             }`}
           >

@@ -8,18 +8,14 @@ import CarCard from '@/components/CarCard';
 import { CARS, getCarById } from '@/data/cars';
 import { DEALERSHIP } from '@/data/dealership';
 import {
-  Fuel,
-  Gauge,
-  Calendar,
-  User,
   ShieldCheck,
   Check,
   MessageSquare,
   Phone,
   ArrowLeft,
-  Share2,
-  Calculator,
   Car as CarIcon,
+  MapPin,
+  Calendar,
 } from 'lucide-react';
 
 interface PageProps {
@@ -42,8 +38,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const title = `${car.year} ${car.make} ${car.model} for Sale | ${DEALERSHIP.altName}`;
-  const description = `${car.name} available at ${DEALERSHIP.name}. Fuel: ${car.fuelType}, Engine: ${car.engineCc}cc, Transmission: ${car.transmission}, Owner: ${car.owner}. Price: ${car.priceDisplay}. Complete service records available.`;
+  const title = `${car.year} ${car.make} ${car.model} for Sale in Matara | ${DEALERSHIP.altName}`;
+  const description = `${car.name} available at ${DEALERSHIP.name} in Matara. Fuel: ${car.fuelType}, Engine: ${car.engineCc}cc, Transmission: ${car.transmission}, Owner: ${car.owner}. Price: ${car.priceDisplay}. Complete service records available.`;
   const primaryImage = car.images[0]
     ? `https://priyankaracarsale.lk${car.images[0]}`
     : undefined;
@@ -73,22 +69,22 @@ export default async function CarDetailPage({ params }: PageProps) {
   );
 
   return (
-    <div className="bg-slate-50 py-8">
+    <div className="bg-[#F2F5F5] py-8">
       {/* Schema.org JSON-LD Structured Data */}
       <JsonLd type="Vehicle" car={car} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb & Navigation */}
-        <div className="mb-6 flex items-center justify-between text-xs text-slate-500">
+        <div className="mb-6 flex items-center justify-between text-xs text-[#536466]">
           <Link
             href="/cars"
-            className="inline-flex items-center gap-1.5 font-medium hover:text-red-600 transition-colors bg-white px-3 py-1.5 rounded-lg border border-slate-200"
+            className="inline-flex items-center gap-1.5 font-semibold hover:text-[#1F7778] transition-colors bg-white px-3 py-1.5 rounded-xl border border-slate-200 shadow-sm"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Inventory</span>
           </Link>
 
-          <span className="hidden sm:inline-block font-mono text-slate-400">
+          <span className="hidden sm:inline-block font-mono text-[#536466]">
             Stock ID: {car.id.toUpperCase()}
           </span>
         </div>
@@ -97,31 +93,31 @@ export default async function CarDetailPage({ params }: PageProps) {
         <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-red-600">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#1F7778]">
                 {car.make}
               </span>
               <span className="text-slate-300">•</span>
-              <span className="text-xs font-semibold text-slate-500">
+              <span className="text-xs font-semibold text-[#536466]">
                 {car.condition} Vehicle
               </span>
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-2xl sm:text-4xl font-extrabold text-[#172325] tracking-tight">
               {car.name}
             </h1>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              {car.year} Model • {car.fuelType} • {car.transmission} • {car.owner}
+            <p className="text-xs sm:text-sm text-[#536466] mt-1 flex items-center gap-2">
+              <span>{car.year} Model</span> • <span>{car.fuelType}</span> • <span>{car.transmission}</span> • <span>{car.owner}</span>
             </p>
           </div>
 
-          <div className="md:text-right bg-slate-50 md:bg-transparent p-4 md:p-0 rounded-xl">
-            <span className="text-xs text-slate-500 font-medium block">Vehicle Price</span>
-            <span className="text-2xl sm:text-3xl font-extrabold text-red-600">
+          <div className="md:text-right bg-[#F2F5F5] md:bg-transparent p-4 md:p-0 rounded-xl">
+            <span className="text-xs text-[#536466] font-medium block">Asking Price</span>
+            <span className="text-2xl sm:text-3xl font-extrabold text-[#D6A84F]">
               {car.priceDisplay}
             </span>
           </div>
         </div>
 
-        {/* Main Grid: Left Gallery & Description, Right Specs & Contact CTA */}
+        {/* Main Content Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left Column: Gallery & Details */}
           <div className="lg:col-span-7 space-y-8">
@@ -132,25 +128,25 @@ export default async function CarDetailPage({ params }: PageProps) {
 
             {/* Description Card */}
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-              <h2 className="text-lg font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
-                <CarIcon className="w-5 h-5 text-red-600" />
+              <h2 className="text-base font-extrabold text-[#172325] border-b border-slate-100 pb-3 flex items-center gap-2">
+                <CarIcon className="w-5 h-5 text-[#1F7778]" />
                 <span>Vehicle Overview & Description</span>
               </h2>
-              <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-line">
+              <p className="text-xs sm:text-sm text-[#172325] leading-relaxed whitespace-pre-line font-normal">
                 {car.description}
               </p>
             </div>
 
             {/* Key Features List */}
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-              <h2 className="text-lg font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-emerald-600" />
+              <h2 className="text-base font-extrabold text-[#172325] border-b border-slate-100 pb-3 flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-[#1F7778]" />
                 <span>Features & Equipment</span>
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {car.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-xs font-medium text-slate-700 bg-slate-50 p-2.5 rounded-lg border border-slate-100">
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <div key={idx} className="flex items-center gap-2 text-xs font-semibold text-[#172325] bg-[#F2F5F5] p-2.5 rounded-xl border border-slate-100">
+                    <Check className="w-4 h-4 text-[#1F7778] shrink-0" />
                     <span>{feature}</span>
                   </div>
                 ))}
@@ -158,19 +154,19 @@ export default async function CarDetailPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Right Column: Specs Table & Conversion Box */}
+          {/* Right Column: Specifications & Direct Inquiry Box */}
           <div className="lg:col-span-5 space-y-6">
-            {/* Action Inquiry Box */}
-            <div className="bg-slate-900 text-white p-6 rounded-2xl shadow-xl space-y-5 border border-slate-800">
+            {/* Direct Inquiry Action Box */}
+            <div className="bg-[#172325] text-white p-6 rounded-2xl shadow-xl space-y-5 border border-[#1F7778]">
               <div>
-                <span className="text-xs font-bold text-red-400 uppercase tracking-wider">
-                  Direct Inquiries
+                <span className="text-xs font-bold text-[#D6A84F] uppercase tracking-wider">
+                  Showroom Inquiries
                 </span>
-                <h3 className="text-xl font-bold mt-1 text-white">
+                <h3 className="text-lg font-extrabold mt-1 text-white">
                   Interested in this vehicle?
                 </h3>
-                <p className="text-xs text-slate-400 mt-1">
-                  Contact Priyankara Car Sale directly for price negotiation, vehicle inspection, or test drives.
+                <p className="text-xs text-slate-300 mt-1">
+                  Contact Priyankara Car Sale directly in Matara for price negotiation, vehicle inspection, or test drives.
                 </p>
               </div>
 
@@ -179,71 +175,77 @@ export default async function CarDetailPage({ params }: PageProps) {
                   href={`https://wa.me/${DEALERSHIP.whatsappRaw}?text=${whatsappMsg}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3.5 px-4 rounded-xl font-bold text-sm shadow-lg transition-colors flex items-center justify-center gap-2 text-center"
+                  className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3.5 px-4 rounded-xl font-bold text-xs shadow-md transition-colors flex items-center justify-center gap-2 text-center"
                 >
-                  <MessageSquare className="w-5 h-5" />
-                  <span>Inquire via WhatsApp</span>
+                  <MessageSquare className="w-4.5 h-4.5" />
+                  <span>WhatsApp Inquiry ({DEALERSHIP.whatsapp})</span>
                 </a>
                 <a
-                  href={`tel:${DEALERSHIP.phoneRaw}`}
-                  className="w-full bg-slate-800 hover:bg-slate-700 text-white py-3.5 px-4 rounded-xl font-semibold text-sm border border-slate-700 transition-colors flex items-center justify-center gap-2 text-center"
+                  href={`tel:${DEALERSHIP.phoneHotlineRaw}`}
+                  className="w-full bg-[#1F7778] hover:bg-[#15595A] text-white py-3.5 px-4 rounded-xl font-bold text-xs border border-[#1F7778] transition-colors flex items-center justify-center gap-2 text-center"
                 >
-                  <Phone className="w-4 h-4 text-red-400" />
-                  <span>Call {DEALERSHIP.phone}</span>
+                  <Phone className="w-4 h-4 text-[#D6A84F]" />
+                  <span>Call Hotline: {DEALERSHIP.phoneHotline}</span>
                 </a>
               </div>
 
-              <div className="pt-3 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
-                <span>Location: {DEALERSHIP.address.city}</span>
-                <span>Opening: {DEALERSHIP.openingHours}</span>
+              <div className="pt-3 border-t border-slate-800 text-xs text-slate-300 space-y-1">
+                <div className="flex items-center gap-1.5 text-xs text-teal-200">
+                  <MapPin className="w-3.5 h-3.5 text-[#D6A84F] shrink-0" />
+                  <span>{DEALERSHIP.address.fullFormatted}</span>
+                </div>
+                <div className="flex justify-between pt-1 text-[11px] text-slate-400">
+                  <span>Tel: {DEALERSHIP.phoneLandline}</span>
+                  <span>Opening: {DEALERSHIP.openingHours}</span>
+                </div>
               </div>
             </div>
 
-            {/* Complete Specifications Grid */}
+            {/* Complete Specs Table */}
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-              <h3 className="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+              <h3 className="text-base font-extrabold text-[#172325] border-b border-slate-100 pb-3">
                 Technical Specifications
               </h3>
-              <div className="divide-y divide-slate-100 text-xs text-slate-700">
+              <div className="divide-y divide-slate-100 text-xs text-[#172325]">
                 <div className="py-2.5 flex justify-between">
-                  <span className="text-slate-500 font-medium">Make / Brand</span>
-                  <span className="font-bold text-slate-900">{car.make}</span>
+                  <span className="text-[#536466] font-medium">Make / Brand</span>
+                  <span className="font-bold">{car.make}</span>
                 </div>
                 <div className="py-2.5 flex justify-between">
-                  <span className="text-slate-500 font-medium">Model</span>
-                  <span className="font-bold text-slate-900">{car.model}</span>
+                  <span className="text-[#536466] font-medium">Model</span>
+                  <span className="font-bold">{car.model}</span>
                 </div>
                 <div className="py-2.5 flex justify-between">
-                  <span className="text-slate-500 font-medium">Year of Manufacture</span>
-                  <span className="font-bold text-slate-900">{car.year}</span>
+                  <span className="text-[#536466] font-medium">Year of Manufacture</span>
+                  <span className="font-bold">{car.year}</span>
                 </div>
                 <div className="py-2.5 flex justify-between">
-                  <span className="text-slate-500 font-medium">Condition</span>
-                  <span className="font-bold text-slate-900">{car.condition}</span>
+                  <span className="text-[#536466] font-medium">Condition</span>
+                  <span className="font-bold">{car.condition}</span>
                 </div>
                 <div className="py-2.5 flex justify-between">
-                  <span className="text-slate-500 font-medium">Ownership</span>
-                  <span className="font-bold text-slate-900">{car.owner}</span>
+                  <span className="text-[#536466] font-medium">Ownership</span>
+                  <span className="font-bold">{car.owner}</span>
                 </div>
                 <div className="py-2.5 flex justify-between">
-                  <span className="text-slate-500 font-medium">Body Type</span>
-                  <span className="font-bold text-slate-900">{car.bodyType}</span>
+                  <span className="text-[#536466] font-medium">Body Type</span>
+                  <span className="font-bold">{car.bodyType}</span>
                 </div>
                 <div className="py-2.5 flex justify-between">
-                  <span className="text-slate-500 font-medium">Transmission</span>
-                  <span className="font-bold text-slate-900">{car.transmission}</span>
+                  <span className="text-[#536466] font-medium">Transmission</span>
+                  <span className="font-bold">{car.transmission}</span>
                 </div>
                 <div className="py-2.5 flex justify-between">
-                  <span className="text-slate-500 font-medium">Fuel Type</span>
-                  <span className="font-bold text-slate-900">{car.fuelType}</span>
+                  <span className="text-[#536466] font-medium">Fuel Type</span>
+                  <span className="font-bold">{car.fuelType}</span>
                 </div>
                 <div className="py-2.5 flex justify-between">
-                  <span className="text-slate-500 font-medium">Engine Capacity</span>
-                  <span className="font-bold text-slate-900">{car.engineCc} cc</span>
+                  <span className="text-[#536466] font-medium">Engine Capacity</span>
+                  <span className="font-bold">{car.engineCc} cc</span>
                 </div>
                 <div className="py-2.5 flex justify-between">
-                  <span className="text-slate-500 font-medium">Odometer Mileage</span>
-                  <span className="font-bold text-slate-900">
+                  <span className="text-[#536466] font-medium">Odometer Mileage</span>
+                  <span className="font-bold">
                     {car.mileage > 0 ? `${car.mileage.toLocaleString()} km` : '0 km (Brand New)'}
                   </span>
                 </div>
@@ -252,10 +254,10 @@ export default async function CarDetailPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Related Inventory Section */}
+        {/* Related Inventory */}
         {relatedCars.length > 0 && (
           <div className="mt-16 pt-8 border-t border-slate-200">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-[#172325] mb-6">
               Similar Vehicles You May Like
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
