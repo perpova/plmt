@@ -133,9 +133,9 @@ export default function Footer() {
               </a>
             </div>
 
-            {/* Landline */}
+            {/* Landline - Icon color updated to Warm Gold #D6A84F */}
             <div className="flex items-center gap-3 text-xs text-slate-300">
-              <Phone className="w-4 h-4 text-slate-400 shrink-0" />
+              <Phone className="w-4 h-4 text-[#D6A84F] shrink-0" />
               <a href={`tel:${DEALERSHIP.phoneLandlineRaw}`} className="hover:text-white">
                 Landline: {DEALERSHIP.phoneLandline}
               </a>
@@ -159,12 +159,12 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Copyright & Developer Credit */}
-        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
-          <p>
+        {/* Bottom Copyright & Developer Credit - Centered on Mobile */}
+        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left text-xs text-slate-500 gap-3">
+          <p className="w-full sm:w-auto text-center sm:text-left">
             &copy; {currentYear} {DEALERSHIP.legalName}. All rights reserved.
           </p>
-          <p>
+          <p className="w-full sm:w-auto text-center sm:text-right">
             Web Development by{' '}
             <a
               href="https://perpova.com/"
